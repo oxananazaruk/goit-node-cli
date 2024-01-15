@@ -1,4 +1,3 @@
-// import { program } from "commander";
 const { program } = require("commander");
 const contacts = require("./contacts.js");
 program
@@ -12,12 +11,11 @@ program.parse();
 
 const options = program.opts();
 
-// TODO: рефакторити
 async function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
     case "list":
       const allContacts = await contacts.listContacts();
-      console.log(allContacts);
+      console.table(allContacts);
       break;
 
     case "get":
